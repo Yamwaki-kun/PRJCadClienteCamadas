@@ -104,7 +104,37 @@ public class CRUDCliente {
 		return msg;
 	}
 	public String deletar(Cliente cliente) {
-		return null;
+		String msg = "";
+		//Cricao dos objetos para a conexao banco de dados
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/clientedb","root","");
+		
+			String consulta = "DELETE FROM tbclientes WHERE id=?";
+			
+			pst = con.prepareStatement(consulta);
+			
+			pst.setInt(1, cliente.getId());
+			
+			int r = pst.executeUpdate();
+			
+			if(r > 0)
+				msg = "Deletado com sucesso";
+			else 
+				msg = "Não foi possivel Deletar";
+			
+		}
+		catch(SQLException ex) {
+			msg = "Erro ao tentar Deletar:"+ex.getMessage();
+		}
+		catch(Exception e) {
+			msg = "Erro inesperado "+e.getMessage();
+		}
+		finally {
+			try{con.close();}catch(Exception e) {e.printStackTrace();}
+		}
+		return msg;
 	}
 	public List<Cliente> PesquisarPorNome(String nome){
 		return null;
