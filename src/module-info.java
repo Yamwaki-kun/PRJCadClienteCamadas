@@ -6,4 +6,5 @@
  *
  */
 module PRJCadCliente {
+	requires java.sql;
 }
