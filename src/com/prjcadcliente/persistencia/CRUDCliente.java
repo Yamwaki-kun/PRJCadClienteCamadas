@@ -187,7 +187,7 @@ public class CRUDCliente {
 			//carregar o drive de comunicação com o banco de dados
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			//Chamar o gerenciador de driver
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/clientedb","root","");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/clientedb?serverTimezone=UTC","root","");
 			//Vamos criar a consulta para selecionar os clientes por nome
 			String consulta = "Select * from tbcliente where id=?";
 			pst = con.prepareStatement(consulta);
@@ -226,7 +226,7 @@ List<Cliente> lista = new ArrayList<Cliente>();
 			//carregar o drive de comunicação com o banco de dados
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			//Chamar o gerenciador de driver
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/clientedb","root","");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/clientedb?serverTimezone=UTC","root","");
 			//Vamos criar a consulta para selecionar os clientes por nome
 			String consulta = "Select * from tbcliente";
 			pst = con.prepareStatement(consulta);
