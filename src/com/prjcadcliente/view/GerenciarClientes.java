@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import com.prjcadcliente.dominio.Cliente;
 import com.prjcadcliente.persistencia.CRUDCliente;
@@ -170,7 +171,21 @@ public class GerenciarClientes extends JFrame {
 		scrollPane.setBounds(10, 299, 416, 262);
 		contentPane.add(scrollPane);
 		
-		tbClientesCadastro = new JTable();
+		String[] colunas = {"Id","Nome","E-Mail","Telefone","Idade"};
+		
+		Object[][] dados = {
+				{15,"Roberto","Roberto@gmail.com","13123123",15},
+				{16,"Roberto","Roberto@gmail.com","13123123",15},
+				{17,"Roberto","Roberto@gmail.com","13123123",15},
+				{18,"Roberto","Roberto@gmail.com","13123123",15},
+				{19,"Roberto","Roberto@gmail.com","13123123",15},
+				{20,"Roberto","Roberto@gmail.com","13123123",15},
+				{21,"Roberto","Roberto@gmail.com","13123123",15}
+		};
+		
+		//Vamos construir o modelo de dados para exibir na tabela
+		DefaultTableModel modelo = new DefaultTableModel(dados,colunas);
+		tbClientesCadastro = new JTable(modelo);
 		scrollPane.setViewportView(tbClientesCadastro);
 	}
 }
